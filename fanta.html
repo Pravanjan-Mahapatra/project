@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fanta Page Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        
+        #main {
+            height: 100vh;
+            background-color: #222;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #main h1 {
+            font-size: 4vw;
+        }
+
+        .card button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            background-color: #ff8000;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 2rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card button:hover {
+            background-color: #fff;
+            color: #ff8000;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        #fanta-page {
+            height: 100vh;
+            background-color: #ff8000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            opacity: 0;
+            z-index: 50;
+            overflow: hidden;
+        }
+
+        #fanta-page h1 {
+            font-size: 5vw;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            animation: glowFade 2s ease-in-out forwards;
+        }
+
+        @keyframes glowFade {
+            0% { opacity: 0; text-shadow: 0 0 0 #fff; }
+            100% { opacity: 1; text-shadow: 0 0 10px #fff, 0 0 20px #fff; }
+        }
+
+        .typed-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #fff;
+            animation: typing 3s steps(40, end), blink 0.7s step-end infinite;
+            color: #fff;
+            font-size: 1.2vw;
+            width: 60%;
+            text-align: center;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 60% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: #fff }
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: rise 6s infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% { bottom: -50px; opacity: 0.4; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(30px); }
+            100% { bottom: 100vh; opacity: 0; transform: translateX(-30px); }
+        }
+
+        #fanta-img {
+            position: absolute;
+            bottom: 10vh;
+            animation: floatUpDown 4s ease-in-out infinite;
+            width: 120px;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            #main h1, #fanta-page h1 {
+                font-size: 6vw;
+            }
+            .typed-text {
+                font-size: 4vw;
+                width: 90%;
+            }
+            .card button {
+                font-size: 4vw;
+                padding: 0.8rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Music -->
+    <audio id="bg-music" src="your-music.mp3" loop></audio>
+
+    <!-- Main Page -->
+    <div id="main">
+        <h1>Get Your Favorite Drink</h1>
+        <div class="card">
+            <button id="buy-now">Buy Fanta</button>
+        </div>
+    </div>
+
+    <!-- Fanta Page -->
+    <div id="fanta-page">
+        <h1>Welcome to Fanta</h1>
+        <img id="fanta-img" src="Assets/fanta.png" alt="Fanta Bottle" />
+        <p class="typed-text">
+            Dive into the fruity fizz of Fanta! Bold flavors and vibrant fun in every bubbly sip.
+        </p>
+    </div>
+
+    <!-- GSAP Animation Script -->
+    <script>
+        document.getElementById("buy-now").addEventListener("click", () => {
+            gsap.to("#main", {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    document.querySelector("#main").style.display = "none";
+                    document.querySelector("#fanta-page").style.display = "flex";
+                    document.getElementById("bg-music").play();
+                    gsap.fromTo("#fanta-page",
+                        { x: '100%', opacity: 0 },
+                        { x: '0%', opacity: 1, duration: 1 }
+                    );
+
+                    for (let i = 0; i < 15; i++) {
+                        const bubble = document.createElement("div");
+                        bubble.classList.add("bubble");
+                        bubble.style.left = `${Math.random() * 100}%`;
+                        document.getElementById("fanta-page").appendChild(bubble);
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
