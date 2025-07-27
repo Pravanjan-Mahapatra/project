@@ -1,47 +1,32 @@
-# 🥤 Beverage Website
+# 🍊 Fanta-Themed Frontend Website
 
-A modern and responsive beverage showcase website built using **Vanilla JavaScript** and **ReactJS**. This project simulates a real-world beverage brand's site, featuring product listings, filtering, responsive UI, and a simple shopping/cart experience.
+This is a vibrant and animated frontend website inspired by Fanta! Built using **HTML**, **CSS**, **JavaScript**, and enhanced with **GSAP (GreenSock Animation Platform)** for playful and smooth animations.
 
 ---
 
-## 🚀 Features
+## 🌟 Features
 
-- 🧃 Browse a list of beverages (juices, sodas, energy drinks, etc.)
-- 🔍 Filter by category, type, or price
-- 🛒 Add/remove products from a cart
-- 📱 Mobile-friendly responsive layout
-- ⚛️ Built using ReactJS for key components like product listing and cart
-- 🎨 Styled with clean and modern CSS
+- Responsive and colorful layout with Fanta-inspired design
+- Animated transitions using GSAP
+- Interactive elements and fluid UI components
+- Smooth scrolling effects and element reveals
+- Optimized for modern browsers
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer         | Technology         |
-|---------------|--------------------|
-| Frontend      | Vanilla JavaScript |
-| UI Components | ReactJS            |
-| Styling       | CSS / Tailwind (optional) |
-| Deployment    | GitHub Pages / Netlify (optional) |
+| Technology | Purpose                        |
+|------------|--------------------------------|
+| HTML       | Structure of the web pages     |
+| CSS        | Styling and responsive design  |
+| JavaScript | Interactivity and DOM control  |
+| GSAP       | Advanced animations and effects|
 
 ---
 
-## 📁 Folder Structure
+## 🚀 Setup Instructions
 
-```bash
-beverage-site/
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/
-│   │   ├── ProductList.jsx
-│   │   ├── Cart.jsx
-│   │   └── FilterBar.jsx
-│   ├── data/
-│   │   └── beverages.json
-│   ├── App.jsx
-│   └── index.js
-├── style/
-│   └── styles.css
-├── README.md
-└── package.json
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/fanta-website.git
